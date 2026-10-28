@@ -1,6 +1,5 @@
 {
-  "type": "MESSAGE_TYPE_CAPABILITES",
-  "capabilites": {
+  "capabilities": {
     "deviceName": "Some device",
     "sensors": [
       {

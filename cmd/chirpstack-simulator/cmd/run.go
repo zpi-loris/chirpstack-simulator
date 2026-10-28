@@ -93,9 +93,9 @@ func parseFilePayload(args []string) func(context.Context, *sync.WaitGroup) erro
 			return errors.Wrap(err, "unable to read file "+file)
 		}
 
-		var message loris_payload.Message
+		var message loris_payload.Uplink
 		if err := protojson.Unmarshal(in, &message); err != nil {
-			return errors.Wrap(err, "payload file is not using loris protoco")
+			return errors.Wrap(err, "payload file is not using loris protocol")
 		}
 
 		out, err := proto.Marshal(&message)

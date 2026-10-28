@@ -21,61 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type MessageType int32
-
-const (
-	MessageType_MESSAGE_TYPE_UNSPECIFIED MessageType = 0
-	MessageType_MESSAGE_TYPE_CAPABILITES MessageType = 1
-	MessageType_MESSAGE_TYPE_REPORT      MessageType = 2
-	MessageType_MESSAGE_TYPE_CALL        MessageType = 3
-	MessageType_MESSAGE_TYPE_HELLO       MessageType = 4
-)
-
-// Enum value maps for MessageType.
-var (
-	MessageType_name = map[int32]string{
-		0: "MESSAGE_TYPE_UNSPECIFIED",
-		1: "MESSAGE_TYPE_CAPABILITES",
-		2: "MESSAGE_TYPE_REPORT",
-		3: "MESSAGE_TYPE_CALL",
-		4: "MESSAGE_TYPE_HELLO",
-	}
-	MessageType_value = map[string]int32{
-		"MESSAGE_TYPE_UNSPECIFIED": 0,
-		"MESSAGE_TYPE_CAPABILITES": 1,
-		"MESSAGE_TYPE_REPORT":      2,
-		"MESSAGE_TYPE_CALL":        3,
-		"MESSAGE_TYPE_HELLO":       4,
-	}
-)
-
-func (x MessageType) Enum() *MessageType {
-	p := new(MessageType)
-	*p = x
-	return p
-}
-
-func (x MessageType) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (MessageType) Descriptor() protoreflect.EnumDescriptor {
-	return file_loris_proto_enumTypes[0].Descriptor()
-}
-
-func (MessageType) Type() protoreflect.EnumType {
-	return &file_loris_proto_enumTypes[0]
-}
-
-func (x MessageType) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use MessageType.Descriptor instead.
-func (MessageType) EnumDescriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{0}
-}
-
 type ValueType int32
 
 const (
@@ -209,11 +154,11 @@ func (x ValueType) String() string {
 }
 
 func (ValueType) Descriptor() protoreflect.EnumDescriptor {
-	return file_loris_proto_enumTypes[1].Descriptor()
+	return file_loris_proto_enumTypes[0].Descriptor()
 }
 
 func (ValueType) Type() protoreflect.EnumType {
-	return &file_loris_proto_enumTypes[1]
+	return &file_loris_proto_enumTypes[0]
 }
 
 func (x ValueType) Number() protoreflect.EnumNumber {
@@ -222,7 +167,7 @@ func (x ValueType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ValueType.Descriptor instead.
 func (ValueType) EnumDescriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{1}
+	return file_loris_proto_rawDescGZIP(), []int{0}
 }
 
 type FuncArgType int32
@@ -267,11 +212,11 @@ func (x FuncArgType) String() string {
 }
 
 func (FuncArgType) Descriptor() protoreflect.EnumDescriptor {
-	return file_loris_proto_enumTypes[2].Descriptor()
+	return file_loris_proto_enumTypes[1].Descriptor()
 }
 
 func (FuncArgType) Type() protoreflect.EnumType {
-	return &file_loris_proto_enumTypes[2]
+	return &file_loris_proto_enumTypes[1]
 }
 
 func (x FuncArgType) Number() protoreflect.EnumNumber {
@@ -280,7 +225,7 @@ func (x FuncArgType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use FuncArgType.Descriptor instead.
 func (FuncArgType) EnumDescriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{2}
+	return file_loris_proto_rawDescGZIP(), []int{1}
 }
 
 type Sensor struct {
@@ -427,7 +372,7 @@ func (x *Function) GetArgType() FuncArgType {
 	return FuncArgType_FUNC_ARG_TYPE_UNSPECIFIED
 }
 
-type Capabilites struct {
+type Capabilities struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	DeviceName    string                 `protobuf:"bytes,1,opt,name=device_name,json=deviceName,proto3" json:"device_name,omitempty"`
 	Sensors       []*Sensor              `protobuf:"bytes,2,rep,name=sensors,proto3" json:"sensors,omitempty"`
@@ -436,20 +381,20 @@ type Capabilites struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Capabilites) Reset() {
-	*x = Capabilites{}
+func (x *Capabilities) Reset() {
+	*x = Capabilities{}
 	mi := &file_loris_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Capabilites) String() string {
+func (x *Capabilities) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Capabilites) ProtoMessage() {}
+func (*Capabilities) ProtoMessage() {}
 
-func (x *Capabilites) ProtoReflect() protoreflect.Message {
+func (x *Capabilities) ProtoReflect() protoreflect.Message {
 	mi := &file_loris_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -461,26 +406,26 @@ func (x *Capabilites) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Capabilites.ProtoReflect.Descriptor instead.
-func (*Capabilites) Descriptor() ([]byte, []int) {
+// Deprecated: Use Capabilities.ProtoReflect.Descriptor instead.
+func (*Capabilities) Descriptor() ([]byte, []int) {
 	return file_loris_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *Capabilites) GetDeviceName() string {
+func (x *Capabilities) GetDeviceName() string {
 	if x != nil {
 		return x.DeviceName
 	}
 	return ""
 }
 
-func (x *Capabilites) GetSensors() []*Sensor {
+func (x *Capabilities) GetSensors() []*Sensor {
 	if x != nil {
 		return x.Sensors
 	}
 	return nil
 }
 
-func (x *Capabilites) GetFunctions() []*Function {
+func (x *Capabilities) GetFunctions() []*Function {
 	if x != nil {
 		return x.Functions
 	}
@@ -492,9 +437,10 @@ type Report struct {
 	SensorId int32                  `protobuf:"varint,1,opt,name=sensor_id,json=sensorId,proto3" json:"sensor_id,omitempty"`
 	// Types that are valid to be assigned to Value:
 	//
-	//	*Report_Float
-	//	*Report_String_
-	//	*Report_Bool
+	//	*Report_IntVal
+	//	*Report_FloatVal
+	//	*Report_StrVal
+	//	*Report_BoolVal
 	Value         isReport_Value `protobuf_oneof:"value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -544,28 +490,37 @@ func (x *Report) GetValue() isReport_Value {
 	return nil
 }
 
-func (x *Report) GetFloat() float32 {
+func (x *Report) GetIntVal() int32 {
 	if x != nil {
-		if x, ok := x.Value.(*Report_Float); ok {
-			return x.Float
+		if x, ok := x.Value.(*Report_IntVal); ok {
+			return x.IntVal
 		}
 	}
 	return 0
 }
 
-func (x *Report) GetString_() string {
+func (x *Report) GetFloatVal() float32 {
 	if x != nil {
-		if x, ok := x.Value.(*Report_String_); ok {
-			return x.String_
+		if x, ok := x.Value.(*Report_FloatVal); ok {
+			return x.FloatVal
+		}
+	}
+	return 0
+}
+
+func (x *Report) GetStrVal() string {
+	if x != nil {
+		if x, ok := x.Value.(*Report_StrVal); ok {
+			return x.StrVal
 		}
 	}
 	return ""
 }
 
-func (x *Report) GetBool() bool {
+func (x *Report) GetBoolVal() bool {
 	if x != nil {
-		if x, ok := x.Value.(*Report_Bool); ok {
-			return x.Bool
+		if x, ok := x.Value.(*Report_BoolVal); ok {
+			return x.BoolVal
 		}
 	}
 	return false
@@ -575,33 +530,111 @@ type isReport_Value interface {
 	isReport_Value()
 }
 
-type Report_Float struct {
-	Float float32 `protobuf:"fixed32,2,opt,name=float,proto3,oneof"`
+type Report_IntVal struct {
+	IntVal int32 `protobuf:"varint,2,opt,name=int_val,json=intVal,proto3,oneof"`
 }
 
-type Report_String_ struct {
-	String_ string `protobuf:"bytes,3,opt,name=string,proto3,oneof"`
+type Report_FloatVal struct {
+	FloatVal float32 `protobuf:"fixed32,3,opt,name=float_val,json=floatVal,proto3,oneof"`
 }
 
-type Report_Bool struct {
-	Bool bool `protobuf:"varint,4,opt,name=bool,proto3,oneof"`
+type Report_StrVal struct {
+	StrVal string `protobuf:"bytes,4,opt,name=str_val,json=strVal,proto3,oneof"`
 }
 
-func (*Report_Float) isReport_Value() {}
+type Report_BoolVal struct {
+	BoolVal bool `protobuf:"varint,5,opt,name=bool_val,json=boolVal,proto3,oneof"`
+}
 
-func (*Report_String_) isReport_Value() {}
+func (*Report_IntVal) isReport_Value() {}
 
-func (*Report_Bool) isReport_Value() {}
+func (*Report_FloatVal) isReport_Value() {}
+
+func (*Report_StrVal) isReport_Value() {}
+
+func (*Report_BoolVal) isReport_Value() {}
+
+type Hello struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Hello) Reset() {
+	*x = Hello{}
+	mi := &file_loris_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Hello) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Hello) ProtoMessage() {}
+
+func (x *Hello) ProtoReflect() protoreflect.Message {
+	mi := &file_loris_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Hello.ProtoReflect.Descriptor instead.
+func (*Hello) Descriptor() ([]byte, []int) {
+	return file_loris_proto_rawDescGZIP(), []int{4}
+}
+
+type Disconnect struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Disconnect) Reset() {
+	*x = Disconnect{}
+	mi := &file_loris_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Disconnect) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Disconnect) ProtoMessage() {}
+
+func (x *Disconnect) ProtoReflect() protoreflect.Message {
+	mi := &file_loris_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Disconnect.ProtoReflect.Descriptor instead.
+func (*Disconnect) Descriptor() ([]byte, []int) {
+	return file_loris_proto_rawDescGZIP(), []int{5}
+}
 
 type Call struct {
 	state      protoimpl.MessageState `protogen:"open.v1"`
 	FunctionId int32                  `protobuf:"varint,1,opt,name=function_id,json=functionId,proto3" json:"function_id,omitempty"`
 	// Types that are valid to be assigned to Value:
 	//
-	//	*Call_Int
-	//	*Call_String_
-	//	*Call_Bool
-	//	*Call_Float
+	//	*Call_IntVal
+	//	*Call_StrVal
+	//	*Call_BoolVal
+	//	*Call_FloatVal
 	Value         isCall_Value `protobuf_oneof:"value"`
 	WakeAfterSecs *int32       `protobuf:"varint,6,opt,name=wake_after_secs,json=wakeAfterSecs,proto3,oneof" json:"wake_after_secs,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -610,7 +643,7 @@ type Call struct {
 
 func (x *Call) Reset() {
 	*x = Call{}
-	mi := &file_loris_proto_msgTypes[4]
+	mi := &file_loris_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -622,7 +655,7 @@ func (x *Call) String() string {
 func (*Call) ProtoMessage() {}
 
 func (x *Call) ProtoReflect() protoreflect.Message {
-	mi := &file_loris_proto_msgTypes[4]
+	mi := &file_loris_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -635,7 +668,7 @@ func (x *Call) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Call.ProtoReflect.Descriptor instead.
 func (*Call) Descriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{4}
+	return file_loris_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Call) GetFunctionId() int32 {
@@ -652,37 +685,37 @@ func (x *Call) GetValue() isCall_Value {
 	return nil
 }
 
-func (x *Call) GetInt() int32 {
+func (x *Call) GetIntVal() int32 {
 	if x != nil {
-		if x, ok := x.Value.(*Call_Int); ok {
-			return x.Int
+		if x, ok := x.Value.(*Call_IntVal); ok {
+			return x.IntVal
 		}
 	}
 	return 0
 }
 
-func (x *Call) GetString_() string {
+func (x *Call) GetStrVal() string {
 	if x != nil {
-		if x, ok := x.Value.(*Call_String_); ok {
-			return x.String_
+		if x, ok := x.Value.(*Call_StrVal); ok {
+			return x.StrVal
 		}
 	}
 	return ""
 }
 
-func (x *Call) GetBool() bool {
+func (x *Call) GetBoolVal() bool {
 	if x != nil {
-		if x, ok := x.Value.(*Call_Bool); ok {
-			return x.Bool
+		if x, ok := x.Value.(*Call_BoolVal); ok {
+			return x.BoolVal
 		}
 	}
 	return false
 }
 
-func (x *Call) GetFloat() float32 {
+func (x *Call) GetFloatVal() float32 {
 	if x != nil {
-		if x, ok := x.Value.(*Call_Float); ok {
-			return x.Float
+		if x, ok := x.Value.(*Call_FloatVal); ok {
+			return x.FloatVal
 		}
 	}
 	return 0
@@ -699,95 +732,57 @@ type isCall_Value interface {
 	isCall_Value()
 }
 
-type Call_Int struct {
-	Int int32 `protobuf:"varint,2,opt,name=int,proto3,oneof"`
+type Call_IntVal struct {
+	IntVal int32 `protobuf:"varint,2,opt,name=int_val,json=intVal,proto3,oneof"`
 }
 
-type Call_String_ struct {
-	String_ string `protobuf:"bytes,3,opt,name=string,proto3,oneof"`
+type Call_StrVal struct {
+	StrVal string `protobuf:"bytes,3,opt,name=str_val,json=strVal,proto3,oneof"`
 }
 
-type Call_Bool struct {
-	Bool bool `protobuf:"varint,4,opt,name=bool,proto3,oneof"`
+type Call_BoolVal struct {
+	BoolVal bool `protobuf:"varint,4,opt,name=bool_val,json=boolVal,proto3,oneof"`
 }
 
-type Call_Float struct {
-	Float float32 `protobuf:"fixed32,5,opt,name=float,proto3,oneof"`
+type Call_FloatVal struct {
+	FloatVal float32 `protobuf:"fixed32,5,opt,name=float_val,json=floatVal,proto3,oneof"`
 }
 
-func (*Call_Int) isCall_Value() {}
+func (*Call_IntVal) isCall_Value() {}
 
-func (*Call_String_) isCall_Value() {}
+func (*Call_StrVal) isCall_Value() {}
 
-func (*Call_Bool) isCall_Value() {}
+func (*Call_BoolVal) isCall_Value() {}
 
-func (*Call_Float) isCall_Value() {}
+func (*Call_FloatVal) isCall_Value() {}
 
-type Hello struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Hello) Reset() {
-	*x = Hello{}
-	mi := &file_loris_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Hello) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Hello) ProtoMessage() {}
-
-func (x *Hello) ProtoReflect() protoreflect.Message {
-	mi := &file_loris_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Hello.ProtoReflect.Descriptor instead.
-func (*Hello) Descriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{5}
-}
-
-type Message struct {
+type Downlink struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	Type  MessageType            `protobuf:"varint,1,opt,name=type,proto3,enum=protocol.v1.MessageType" json:"type,omitempty"`
-	// Types that are valid to be assigned to Details:
+	// Types that are valid to be assigned to Payload:
 	//
-	//	*Message_Capabilites
-	//	*Message_Report
-	//	*Message_Call
-	//	*Message_Hello
-	Details       isMessage_Details `protobuf_oneof:"details"`
+	//	*Downlink_Call
+	//	*Downlink_Hello
+	//	*Downlink_Disconnect
+	Payload       isDownlink_Payload `protobuf_oneof:"payload"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Message) Reset() {
-	*x = Message{}
-	mi := &file_loris_proto_msgTypes[6]
+func (x *Downlink) Reset() {
+	*x = Downlink{}
+	mi := &file_loris_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Message) String() string {
+func (x *Downlink) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Message) ProtoMessage() {}
+func (*Downlink) ProtoMessage() {}
 
-func (x *Message) ProtoReflect() protoreflect.Message {
-	mi := &file_loris_proto_msgTypes[6]
+func (x *Downlink) ProtoReflect() protoreflect.Message {
+	mi := &file_loris_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -798,88 +793,164 @@ func (x *Message) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Message.ProtoReflect.Descriptor instead.
-func (*Message) Descriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{6}
+// Deprecated: Use Downlink.ProtoReflect.Descriptor instead.
+func (*Downlink) Descriptor() ([]byte, []int) {
+	return file_loris_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *Message) GetType() MessageType {
+func (x *Downlink) GetPayload() isDownlink_Payload {
 	if x != nil {
-		return x.Type
-	}
-	return MessageType_MESSAGE_TYPE_UNSPECIFIED
-}
-
-func (x *Message) GetDetails() isMessage_Details {
-	if x != nil {
-		return x.Details
+		return x.Payload
 	}
 	return nil
 }
 
-func (x *Message) GetCapabilites() *Capabilites {
+func (x *Downlink) GetCall() *Call {
 	if x != nil {
-		if x, ok := x.Details.(*Message_Capabilites); ok {
-			return x.Capabilites
-		}
-	}
-	return nil
-}
-
-func (x *Message) GetReport() *Report {
-	if x != nil {
-		if x, ok := x.Details.(*Message_Report); ok {
-			return x.Report
-		}
-	}
-	return nil
-}
-
-func (x *Message) GetCall() *Call {
-	if x != nil {
-		if x, ok := x.Details.(*Message_Call); ok {
+		if x, ok := x.Payload.(*Downlink_Call); ok {
 			return x.Call
 		}
 	}
 	return nil
 }
 
-func (x *Message) GetHello() *Hello {
+func (x *Downlink) GetHello() *Hello {
 	if x != nil {
-		if x, ok := x.Details.(*Message_Hello); ok {
+		if x, ok := x.Payload.(*Downlink_Hello); ok {
 			return x.Hello
 		}
 	}
 	return nil
 }
 
-type isMessage_Details interface {
-	isMessage_Details()
+func (x *Downlink) GetDisconnect() *Disconnect {
+	if x != nil {
+		if x, ok := x.Payload.(*Downlink_Disconnect); ok {
+			return x.Disconnect
+		}
+	}
+	return nil
 }
 
-type Message_Capabilites struct {
-	Capabilites *Capabilites `protobuf:"bytes,2,opt,name=capabilites,proto3,oneof"`
+type isDownlink_Payload interface {
+	isDownlink_Payload()
 }
 
-type Message_Report struct {
-	Report *Report `protobuf:"bytes,3,opt,name=report,proto3,oneof"`
+type Downlink_Call struct {
+	Call *Call `protobuf:"bytes,1,opt,name=call,proto3,oneof"`
 }
 
-type Message_Call struct {
-	Call *Call `protobuf:"bytes,4,opt,name=call,proto3,oneof"`
+type Downlink_Hello struct {
+	Hello *Hello `protobuf:"bytes,2,opt,name=hello,proto3,oneof"`
 }
 
-type Message_Hello struct {
-	Hello *Hello `protobuf:"bytes,5,opt,name=hello,proto3,oneof"`
+type Downlink_Disconnect struct {
+	Disconnect *Disconnect `protobuf:"bytes,3,opt,name=disconnect,proto3,oneof"`
 }
 
-func (*Message_Capabilites) isMessage_Details() {}
+func (*Downlink_Call) isDownlink_Payload() {}
 
-func (*Message_Report) isMessage_Details() {}
+func (*Downlink_Hello) isDownlink_Payload() {}
 
-func (*Message_Call) isMessage_Details() {}
+func (*Downlink_Disconnect) isDownlink_Payload() {}
 
-func (*Message_Hello) isMessage_Details() {}
+type Uplink struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Payload:
+	//
+	//	*Uplink_Report
+	//	*Uplink_Capabilities
+	//	*Uplink_Hello
+	Payload       isUplink_Payload `protobuf_oneof:"payload"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Uplink) Reset() {
+	*x = Uplink{}
+	mi := &file_loris_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Uplink) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Uplink) ProtoMessage() {}
+
+func (x *Uplink) ProtoReflect() protoreflect.Message {
+	mi := &file_loris_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Uplink.ProtoReflect.Descriptor instead.
+func (*Uplink) Descriptor() ([]byte, []int) {
+	return file_loris_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *Uplink) GetPayload() isUplink_Payload {
+	if x != nil {
+		return x.Payload
+	}
+	return nil
+}
+
+func (x *Uplink) GetReport() *Report {
+	if x != nil {
+		if x, ok := x.Payload.(*Uplink_Report); ok {
+			return x.Report
+		}
+	}
+	return nil
+}
+
+func (x *Uplink) GetCapabilities() *Capabilities {
+	if x != nil {
+		if x, ok := x.Payload.(*Uplink_Capabilities); ok {
+			return x.Capabilities
+		}
+	}
+	return nil
+}
+
+func (x *Uplink) GetHello() *Hello {
+	if x != nil {
+		if x, ok := x.Payload.(*Uplink_Hello); ok {
+			return x.Hello
+		}
+	}
+	return nil
+}
+
+type isUplink_Payload interface {
+	isUplink_Payload()
+}
+
+type Uplink_Report struct {
+	Report *Report `protobuf:"bytes,1,opt,name=report,proto3,oneof"`
+}
+
+type Uplink_Capabilities struct {
+	Capabilities *Capabilities `protobuf:"bytes,2,opt,name=capabilities,proto3,oneof"`
+}
+
+type Uplink_Hello struct {
+	Hello *Hello `protobuf:"bytes,3,opt,name=hello,proto3,oneof"`
+}
+
+func (*Uplink_Report) isUplink_Payload() {}
+
+func (*Uplink_Capabilities) isUplink_Payload() {}
+
+func (*Uplink_Hello) isUplink_Payload() {}
 
 var File_loris_proto protoreflect.FileDescriptor
 
@@ -898,42 +969,44 @@ const file_loris_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x123\n" +
-	"\barg_type\x18\x04 \x01(\x0e2\x18.protocol.v1.FuncArgTypeR\aargType\"\x92\x01\n" +
-	"\vCapabilites\x12\x1f\n" +
+	"\barg_type\x18\x04 \x01(\x0e2\x18.protocol.v1.FuncArgTypeR\aargType\"\x93\x01\n" +
+	"\fCapabilities\x12\x1f\n" +
 	"\vdevice_name\x18\x01 \x01(\tR\n" +
 	"deviceName\x12-\n" +
 	"\asensors\x18\x02 \x03(\v2\x13.protocol.v1.SensorR\asensors\x123\n" +
-	"\tfunctions\x18\x03 \x03(\v2\x15.protocol.v1.FunctionR\tfunctions\"v\n" +
+	"\tfunctions\x18\x03 \x03(\v2\x15.protocol.v1.FunctionR\tfunctions\"\xa0\x01\n" +
 	"\x06Report\x12\x1b\n" +
-	"\tsensor_id\x18\x01 \x01(\x05R\bsensorId\x12\x16\n" +
-	"\x05float\x18\x02 \x01(\x02H\x00R\x05float\x12\x18\n" +
-	"\x06string\x18\x03 \x01(\tH\x00R\x06string\x12\x14\n" +
-	"\x04bool\x18\x04 \x01(\bH\x00R\x04boolB\a\n" +
-	"\x05value\"\xcd\x01\n" +
+	"\tsensor_id\x18\x01 \x01(\x05R\bsensorId\x12\x19\n" +
+	"\aint_val\x18\x02 \x01(\x05H\x00R\x06intVal\x12\x1d\n" +
+	"\tfloat_val\x18\x03 \x01(\x02H\x00R\bfloatVal\x12\x19\n" +
+	"\astr_val\x18\x04 \x01(\tH\x00R\x06strVal\x12\x1b\n" +
+	"\bbool_val\x18\x05 \x01(\bH\x00R\aboolValB\a\n" +
+	"\x05value\"\a\n" +
+	"\x05Hello\"\f\n" +
+	"\n" +
+	"Disconnect\"\xe3\x01\n" +
 	"\x04Call\x12\x1f\n" +
 	"\vfunction_id\x18\x01 \x01(\x05R\n" +
-	"functionId\x12\x12\n" +
-	"\x03int\x18\x02 \x01(\x05H\x00R\x03int\x12\x18\n" +
-	"\x06string\x18\x03 \x01(\tH\x00R\x06string\x12\x14\n" +
-	"\x04bool\x18\x04 \x01(\bH\x00R\x04bool\x12\x16\n" +
-	"\x05float\x18\x05 \x01(\x02H\x00R\x05float\x12+\n" +
+	"functionId\x12\x19\n" +
+	"\aint_val\x18\x02 \x01(\x05H\x00R\x06intVal\x12\x19\n" +
+	"\astr_val\x18\x03 \x01(\tH\x00R\x06strVal\x12\x1b\n" +
+	"\bbool_val\x18\x04 \x01(\bH\x00R\aboolVal\x12\x1d\n" +
+	"\tfloat_val\x18\x05 \x01(\x02H\x00R\bfloatVal\x12+\n" +
 	"\x0fwake_after_secs\x18\x06 \x01(\x05H\x01R\rwakeAfterSecs\x88\x01\x01B\a\n" +
 	"\x05valueB\x12\n" +
-	"\x10_wake_after_secs\"\a\n" +
-	"\x05Hello\"\x84\x02\n" +
-	"\aMessage\x12,\n" +
-	"\x04type\x18\x01 \x01(\x0e2\x18.protocol.v1.MessageTypeR\x04type\x12<\n" +
-	"\vcapabilites\x18\x02 \x01(\v2\x18.protocol.v1.CapabilitesH\x00R\vcapabilites\x12-\n" +
-	"\x06report\x18\x03 \x01(\v2\x13.protocol.v1.ReportH\x00R\x06report\x12'\n" +
-	"\x04call\x18\x04 \x01(\v2\x11.protocol.v1.CallH\x00R\x04call\x12*\n" +
-	"\x05hello\x18\x05 \x01(\v2\x12.protocol.v1.HelloH\x00R\x05helloB\t\n" +
-	"\adetails*\x91\x01\n" +
-	"\vMessageType\x12\x1c\n" +
-	"\x18MESSAGE_TYPE_UNSPECIFIED\x10\x00\x12\x1c\n" +
-	"\x18MESSAGE_TYPE_CAPABILITES\x10\x01\x12\x17\n" +
-	"\x13MESSAGE_TYPE_REPORT\x10\x02\x12\x15\n" +
-	"\x11MESSAGE_TYPE_CALL\x10\x03\x12\x16\n" +
-	"\x12MESSAGE_TYPE_HELLO\x10\x04*\xba\x06\n" +
+	"\x10_wake_after_secs\"\xa5\x01\n" +
+	"\bDownlink\x12'\n" +
+	"\x04call\x18\x01 \x01(\v2\x11.protocol.v1.CallH\x00R\x04call\x12*\n" +
+	"\x05hello\x18\x02 \x01(\v2\x12.protocol.v1.HelloH\x00R\x05hello\x129\n" +
+	"\n" +
+	"disconnect\x18\x03 \x01(\v2\x17.protocol.v1.DisconnectH\x00R\n" +
+	"disconnectB\t\n" +
+	"\apayload\"\xaf\x01\n" +
+	"\x06Uplink\x12-\n" +
+	"\x06report\x18\x01 \x01(\v2\x13.protocol.v1.ReportH\x00R\x06report\x12?\n" +
+	"\fcapabilities\x18\x02 \x01(\v2\x19.protocol.v1.CapabilitiesH\x00R\fcapabilities\x12*\n" +
+	"\x05hello\x18\x03 \x01(\v2\x12.protocol.v1.HelloH\x00R\x05helloB\t\n" +
+	"\apayload*\xba\x06\n" +
 	"\tValueType\x12\x1a\n" +
 	"\x16VALUE_TYPE_UNSPECIFIED\x10\x00\x12\x16\n" +
 	"\x12VALUE_TYPE_NUMERIC\x10\x01\x12\x13\n" +
@@ -990,35 +1063,37 @@ func file_loris_proto_rawDescGZIP() []byte {
 	return file_loris_proto_rawDescData
 }
 
-var file_loris_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_loris_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_loris_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_loris_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_loris_proto_goTypes = []any{
-	(MessageType)(0),    // 0: protocol.v1.MessageType
-	(ValueType)(0),      // 1: protocol.v1.ValueType
-	(FuncArgType)(0),    // 2: protocol.v1.FuncArgType
-	(*Sensor)(nil),      // 3: protocol.v1.Sensor
-	(*Function)(nil),    // 4: protocol.v1.Function
-	(*Capabilites)(nil), // 5: protocol.v1.Capabilites
-	(*Report)(nil),      // 6: protocol.v1.Report
-	(*Call)(nil),        // 7: protocol.v1.Call
-	(*Hello)(nil),       // 8: protocol.v1.Hello
-	(*Message)(nil),     // 9: protocol.v1.Message
+	(ValueType)(0),       // 0: protocol.v1.ValueType
+	(FuncArgType)(0),     // 1: protocol.v1.FuncArgType
+	(*Sensor)(nil),       // 2: protocol.v1.Sensor
+	(*Function)(nil),     // 3: protocol.v1.Function
+	(*Capabilities)(nil), // 4: protocol.v1.Capabilities
+	(*Report)(nil),       // 5: protocol.v1.Report
+	(*Hello)(nil),        // 6: protocol.v1.Hello
+	(*Disconnect)(nil),   // 7: protocol.v1.Disconnect
+	(*Call)(nil),         // 8: protocol.v1.Call
+	(*Downlink)(nil),     // 9: protocol.v1.Downlink
+	(*Uplink)(nil),       // 10: protocol.v1.Uplink
 }
 var file_loris_proto_depIdxs = []int32{
-	1, // 0: protocol.v1.Sensor.value_type:type_name -> protocol.v1.ValueType
-	2, // 1: protocol.v1.Function.arg_type:type_name -> protocol.v1.FuncArgType
-	3, // 2: protocol.v1.Capabilites.sensors:type_name -> protocol.v1.Sensor
-	4, // 3: protocol.v1.Capabilites.functions:type_name -> protocol.v1.Function
-	0, // 4: protocol.v1.Message.type:type_name -> protocol.v1.MessageType
-	5, // 5: protocol.v1.Message.capabilites:type_name -> protocol.v1.Capabilites
-	6, // 6: protocol.v1.Message.report:type_name -> protocol.v1.Report
-	7, // 7: protocol.v1.Message.call:type_name -> protocol.v1.Call
-	8, // 8: protocol.v1.Message.hello:type_name -> protocol.v1.Hello
-	9, // [9:9] is the sub-list for method output_type
-	9, // [9:9] is the sub-list for method input_type
-	9, // [9:9] is the sub-list for extension type_name
-	9, // [9:9] is the sub-list for extension extendee
-	0, // [0:9] is the sub-list for field type_name
+	0,  // 0: protocol.v1.Sensor.value_type:type_name -> protocol.v1.ValueType
+	1,  // 1: protocol.v1.Function.arg_type:type_name -> protocol.v1.FuncArgType
+	2,  // 2: protocol.v1.Capabilities.sensors:type_name -> protocol.v1.Sensor
+	3,  // 3: protocol.v1.Capabilities.functions:type_name -> protocol.v1.Function
+	8,  // 4: protocol.v1.Downlink.call:type_name -> protocol.v1.Call
+	6,  // 5: protocol.v1.Downlink.hello:type_name -> protocol.v1.Hello
+	7,  // 6: protocol.v1.Downlink.disconnect:type_name -> protocol.v1.Disconnect
+	5,  // 7: protocol.v1.Uplink.report:type_name -> protocol.v1.Report
+	4,  // 8: protocol.v1.Uplink.capabilities:type_name -> protocol.v1.Capabilities
+	6,  // 9: protocol.v1.Uplink.hello:type_name -> protocol.v1.Hello
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_loris_proto_init() }
@@ -1028,29 +1103,34 @@ func file_loris_proto_init() {
 	}
 	file_loris_proto_msgTypes[0].OneofWrappers = []any{}
 	file_loris_proto_msgTypes[3].OneofWrappers = []any{
-		(*Report_Float)(nil),
-		(*Report_String_)(nil),
-		(*Report_Bool)(nil),
-	}
-	file_loris_proto_msgTypes[4].OneofWrappers = []any{
-		(*Call_Int)(nil),
-		(*Call_String_)(nil),
-		(*Call_Bool)(nil),
-		(*Call_Float)(nil),
+		(*Report_IntVal)(nil),
+		(*Report_FloatVal)(nil),
+		(*Report_StrVal)(nil),
+		(*Report_BoolVal)(nil),
 	}
 	file_loris_proto_msgTypes[6].OneofWrappers = []any{
-		(*Message_Capabilites)(nil),
-		(*Message_Report)(nil),
-		(*Message_Call)(nil),
-		(*Message_Hello)(nil),
+		(*Call_IntVal)(nil),
+		(*Call_StrVal)(nil),
+		(*Call_BoolVal)(nil),
+		(*Call_FloatVal)(nil),
+	}
+	file_loris_proto_msgTypes[7].OneofWrappers = []any{
+		(*Downlink_Call)(nil),
+		(*Downlink_Hello)(nil),
+		(*Downlink_Disconnect)(nil),
+	}
+	file_loris_proto_msgTypes[8].OneofWrappers = []any{
+		(*Uplink_Report)(nil),
+		(*Uplink_Capabilities)(nil),
+		(*Uplink_Hello)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_loris_proto_rawDesc), len(file_loris_proto_rawDesc)),
-			NumEnums:      3,
-			NumMessages:   7,
+			NumEnums:      2,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -24,6 +24,16 @@ docker compose run --rm chirpstack-simulator make clean build
 
 The binary will be located under `build/chirpstack-simulator`.
 
+### Protocol buffer compilation
+
+```bash
+protoc \
+  --proto_path=proto \
+  --go_out=internal/loris-payload/ \
+  --go_opt=module=github.com/brocaar/chirpstack-simulator/internal/loris-payload \
+  proto/loris.proto
+```
+
 ## Configuration
 
 For generating a configuration template, use the following command:
