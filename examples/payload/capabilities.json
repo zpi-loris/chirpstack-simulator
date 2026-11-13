@@ -1,34 +1,46 @@
 {
   "capabilities": {
-    "deviceName": "Some device",
+    "deviceName": "loris_sample",
     "sensors": [
       {
-        "id": 10,
-        "name": "Some Sensor",
-        "description": "This sensor shows some data",
-        "valueType": "VALUE_TYPE_NUMERIC",
-        "unit": "km"
+        "id": 1,
+        "name": "env_temp_sensor",
+        "valueType": "SENSOR_VALUE_TYPE_FLOAT",
+        "semantics": "SENSOR_SEMANTICS_TEMPERATURE",
+        "unit": "C"
       },
       {
-        "id": 10,
-        "name": "Some Sensor",
-        "description": "This sensor shows some data",
-        "valueType": "VALUE_TYPE_NUMERIC",
-        "unit": "km"
+        "id": 2,
+        "name": "moisture_sensor",
+        "valueType": "SENSOR_VALUE_TYPE_FLOAT",
+        "semantics": "SENSOR_SEMANTICS_MOISTURE",
+        "unit": "%"
       }
     ],
     "functions": [
       {
-        "id": 10,
-        "name": "Some Function",
-        "description": "This function does some stuff",
-        "argType": "FUNC_ARG_TYPE_VOID"
+        "id": 1,
+        "name": "beep_msecs",
+        "description": "Beep for n msecs",
+        "argType": "FUNC_ARG_TYPE_INT"
       },
       {
-        "id": 10,
-        "name": "Some Function",
-        "description": "This function does some stuff",
-        "argType": "FUNC_ARG_TYPE_VOID"
+        "id": 2,
+        "name": "set_led_green",
+        "description": "Brightness: 0-100",
+        "argType": "FUNC_ARG_TYPE_INT"
+      },
+      {
+        "id": 3,
+        "name": "set_led_yellow",
+        "description": "Brightness: 0-100",
+        "argType": "FUNC_ARG_TYPE_INT"
+      },
+      {
+        "id": 4,
+        "name": "set_led_red",
+        "description": "Brightness: 0-100",
+        "argType": "FUNC_ARG_TYPE_INT"
       }
     ]
   }

@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        v7.36.2
-// source: loris.proto
+// source: proto/loris.proto
 
 package loris_payload
 
@@ -21,153 +21,202 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type ValueType int32
+type SensorValueType int32
 
 const (
-	// General
-	ValueType_VALUE_TYPE_UNSPECIFIED ValueType = 0
-	ValueType_VALUE_TYPE_NUMERIC     ValueType = 1
-	ValueType_VALUE_TYPE_TEXT        ValueType = 2
-	ValueType_VALUE_TYPE_BOOL        ValueType = 3
-	// Common
-	ValueType_VALUE_TYPE_TEMPERATURE ValueType = 4
-	ValueType_VALUE_TYPE_PRESSURE    ValueType = 5
-	ValueType_VALUE_TYPE_FREQUENCY   ValueType = 6
-	ValueType_VALUE_TYPE_MOISTURE    ValueType = 7
-	ValueType_VALUE_TYPE_UPTIME      ValueType = 8
-	ValueType_VALUE_TYPE_AREA        ValueType = 9
-	ValueType_VALUE_TYPE_DISTANCE    ValueType = 10
-	ValueType_VALUE_TYPE_DURATION    ValueType = 11
-	ValueType_VALUE_TYPE_ILLUMINANCE ValueType = 12
-	ValueType_VALUE_TYPE_WATER       ValueType = 13
-	ValueType_VALUE_TYPE_WEIGHT      ValueType = 14
-	// Air index
-	ValueType_VALUE_TYPE_AQI      ValueType = 15
-	ValueType_VALUE_TYPE_CO2      ValueType = 16
-	ValueType_VALUE_TYPE_PM1      ValueType = 17
-	ValueType_VALUE_TYPE_PM25     ValueType = 18
-	ValueType_VALUE_TYPE_PM4      ValueType = 19
-	ValueType_VALUE_TYPE_PM10     ValueType = 20
-	ValueType_VALUE_TYPE_HUMIDITY ValueType = 21
-	// Wind
-	ValueType_VALUE_TYPE_WIND_SPEED ValueType = 22
-	// Electricity
-	ValueType_VALUE_TYPE_BATTERY ValueType = 23
-	ValueType_VALUE_TYPE_ENERGY  ValueType = 24
-	ValueType_VALUE_TYPE_VOLTAGE ValueType = 25
-	ValueType_VALUE_TYPE_CURRENT ValueType = 26
-	// Transmission
-	ValueType_VALUE_TYPE_DATA_RATE       ValueType = 27
-	ValueType_VALUE_TYPE_DATA_SIZE       ValueType = 28
-	ValueType_VALUE_TYPE_SIGNAL_STRENGTH ValueType = 29
-	// Earth
-	ValueType_VALUE_TYPE_PH         ValueType = 30
-	ValueType_VALUE_TYPE_POTASSIUM  ValueType = 31
-	ValueType_VALUE_TYPE_PHOSPHORUS ValueType = 32
-	ValueType_VALUE_TYPE_NITROGEN   ValueType = 33
+	SensorValueType_SENSOR_VALUE_TYPE_UNSPECIFIED SensorValueType = 0
+	SensorValueType_SENSOR_VALUE_TYPE_INT         SensorValueType = 1
+	SensorValueType_SENSOR_VALUE_TYPE_FLOAT       SensorValueType = 2
+	SensorValueType_SENSOR_VALUE_TYPE_TEXT        SensorValueType = 3
+	SensorValueType_SENSOR_VALUE_TYPE_BOOL        SensorValueType = 4
 )
 
-// Enum value maps for ValueType.
+// Enum value maps for SensorValueType.
 var (
-	ValueType_name = map[int32]string{
-		0:  "VALUE_TYPE_UNSPECIFIED",
-		1:  "VALUE_TYPE_NUMERIC",
-		2:  "VALUE_TYPE_TEXT",
-		3:  "VALUE_TYPE_BOOL",
-		4:  "VALUE_TYPE_TEMPERATURE",
-		5:  "VALUE_TYPE_PRESSURE",
-		6:  "VALUE_TYPE_FREQUENCY",
-		7:  "VALUE_TYPE_MOISTURE",
-		8:  "VALUE_TYPE_UPTIME",
-		9:  "VALUE_TYPE_AREA",
-		10: "VALUE_TYPE_DISTANCE",
-		11: "VALUE_TYPE_DURATION",
-		12: "VALUE_TYPE_ILLUMINANCE",
-		13: "VALUE_TYPE_WATER",
-		14: "VALUE_TYPE_WEIGHT",
-		15: "VALUE_TYPE_AQI",
-		16: "VALUE_TYPE_CO2",
-		17: "VALUE_TYPE_PM1",
-		18: "VALUE_TYPE_PM25",
-		19: "VALUE_TYPE_PM4",
-		20: "VALUE_TYPE_PM10",
-		21: "VALUE_TYPE_HUMIDITY",
-		22: "VALUE_TYPE_WIND_SPEED",
-		23: "VALUE_TYPE_BATTERY",
-		24: "VALUE_TYPE_ENERGY",
-		25: "VALUE_TYPE_VOLTAGE",
-		26: "VALUE_TYPE_CURRENT",
-		27: "VALUE_TYPE_DATA_RATE",
-		28: "VALUE_TYPE_DATA_SIZE",
-		29: "VALUE_TYPE_SIGNAL_STRENGTH",
-		30: "VALUE_TYPE_PH",
-		31: "VALUE_TYPE_POTASSIUM",
-		32: "VALUE_TYPE_PHOSPHORUS",
-		33: "VALUE_TYPE_NITROGEN",
+	SensorValueType_name = map[int32]string{
+		0: "SENSOR_VALUE_TYPE_UNSPECIFIED",
+		1: "SENSOR_VALUE_TYPE_INT",
+		2: "SENSOR_VALUE_TYPE_FLOAT",
+		3: "SENSOR_VALUE_TYPE_TEXT",
+		4: "SENSOR_VALUE_TYPE_BOOL",
 	}
-	ValueType_value = map[string]int32{
-		"VALUE_TYPE_UNSPECIFIED":     0,
-		"VALUE_TYPE_NUMERIC":         1,
-		"VALUE_TYPE_TEXT":            2,
-		"VALUE_TYPE_BOOL":            3,
-		"VALUE_TYPE_TEMPERATURE":     4,
-		"VALUE_TYPE_PRESSURE":        5,
-		"VALUE_TYPE_FREQUENCY":       6,
-		"VALUE_TYPE_MOISTURE":        7,
-		"VALUE_TYPE_UPTIME":          8,
-		"VALUE_TYPE_AREA":            9,
-		"VALUE_TYPE_DISTANCE":        10,
-		"VALUE_TYPE_DURATION":        11,
-		"VALUE_TYPE_ILLUMINANCE":     12,
-		"VALUE_TYPE_WATER":           13,
-		"VALUE_TYPE_WEIGHT":          14,
-		"VALUE_TYPE_AQI":             15,
-		"VALUE_TYPE_CO2":             16,
-		"VALUE_TYPE_PM1":             17,
-		"VALUE_TYPE_PM25":            18,
-		"VALUE_TYPE_PM4":             19,
-		"VALUE_TYPE_PM10":            20,
-		"VALUE_TYPE_HUMIDITY":        21,
-		"VALUE_TYPE_WIND_SPEED":      22,
-		"VALUE_TYPE_BATTERY":         23,
-		"VALUE_TYPE_ENERGY":          24,
-		"VALUE_TYPE_VOLTAGE":         25,
-		"VALUE_TYPE_CURRENT":         26,
-		"VALUE_TYPE_DATA_RATE":       27,
-		"VALUE_TYPE_DATA_SIZE":       28,
-		"VALUE_TYPE_SIGNAL_STRENGTH": 29,
-		"VALUE_TYPE_PH":              30,
-		"VALUE_TYPE_POTASSIUM":       31,
-		"VALUE_TYPE_PHOSPHORUS":      32,
-		"VALUE_TYPE_NITROGEN":        33,
+	SensorValueType_value = map[string]int32{
+		"SENSOR_VALUE_TYPE_UNSPECIFIED": 0,
+		"SENSOR_VALUE_TYPE_INT":         1,
+		"SENSOR_VALUE_TYPE_FLOAT":       2,
+		"SENSOR_VALUE_TYPE_TEXT":        3,
+		"SENSOR_VALUE_TYPE_BOOL":        4,
 	}
 )
 
-func (x ValueType) Enum() *ValueType {
-	p := new(ValueType)
+func (x SensorValueType) Enum() *SensorValueType {
+	p := new(SensorValueType)
 	*p = x
 	return p
 }
 
-func (x ValueType) String() string {
+func (x SensorValueType) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (ValueType) Descriptor() protoreflect.EnumDescriptor {
-	return file_loris_proto_enumTypes[0].Descriptor()
+func (SensorValueType) Descriptor() protoreflect.EnumDescriptor {
+	return file_proto_loris_proto_enumTypes[0].Descriptor()
 }
 
-func (ValueType) Type() protoreflect.EnumType {
-	return &file_loris_proto_enumTypes[0]
+func (SensorValueType) Type() protoreflect.EnumType {
+	return &file_proto_loris_proto_enumTypes[0]
 }
 
-func (x ValueType) Number() protoreflect.EnumNumber {
+func (x SensorValueType) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use ValueType.Descriptor instead.
-func (ValueType) EnumDescriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use SensorValueType.Descriptor instead.
+func (SensorValueType) EnumDescriptor() ([]byte, []int) {
+	return file_proto_loris_proto_rawDescGZIP(), []int{0}
+}
+
+type SensorSemantics int32
+
+const (
+	SensorSemantics_SENSOR_SEMANTICS_UNSPECIFIED SensorSemantics = 0
+	// Universal
+	SensorSemantics_SENSOR_SEMANTICS_UNIVERSAL SensorSemantics = 1
+	// Common
+	SensorSemantics_SENSOR_SEMANTICS_TEMPERATURE SensorSemantics = 2
+	SensorSemantics_SENSOR_SEMANTICS_PRESSURE    SensorSemantics = 3
+	SensorSemantics_SENSOR_SEMANTICS_FREQUENCY   SensorSemantics = 4
+	SensorSemantics_SENSOR_SEMANTICS_MOISTURE    SensorSemantics = 5
+	SensorSemantics_SENSOR_SEMANTICS_UPTIME      SensorSemantics = 6
+	SensorSemantics_SENSOR_SEMANTICS_AREA        SensorSemantics = 7
+	SensorSemantics_SENSOR_SEMANTICS_DISTANCE    SensorSemantics = 8
+	SensorSemantics_SENSOR_SEMANTICS_DURATION    SensorSemantics = 9
+	SensorSemantics_SENSOR_SEMANTICS_ILLUMINANCE SensorSemantics = 10
+	SensorSemantics_SENSOR_SEMANTICS_WATER       SensorSemantics = 11
+	SensorSemantics_SENSOR_SEMANTICS_WEIGHT      SensorSemantics = 12
+	// Air index
+	SensorSemantics_SENSOR_SEMANTICS_AQI      SensorSemantics = 13
+	SensorSemantics_SENSOR_SEMANTICS_CO2      SensorSemantics = 14
+	SensorSemantics_SENSOR_SEMANTICS_PM1      SensorSemantics = 15
+	SensorSemantics_SENSOR_SEMANTICS_PM25     SensorSemantics = 16
+	SensorSemantics_SENSOR_SEMANTICS_PM4      SensorSemantics = 17
+	SensorSemantics_SENSOR_SEMANTICS_PM10     SensorSemantics = 18
+	SensorSemantics_SENSOR_SEMANTICS_HUMIDITY SensorSemantics = 19
+	// Wind
+	SensorSemantics_SENSOR_SEMANTICS_WIND_SPEED SensorSemantics = 20
+	// Electricity
+	SensorSemantics_SENSOR_SEMANTICS_BATTERY SensorSemantics = 21
+	SensorSemantics_SENSOR_SEMANTICS_ENERGY  SensorSemantics = 22
+	SensorSemantics_SENSOR_SEMANTICS_VOLTAGE SensorSemantics = 23
+	SensorSemantics_SENSOR_SEMANTICS_CURRENT SensorSemantics = 24
+	// Transmission
+	SensorSemantics_SENSOR_SEMANTICS_DATA_RATE       SensorSemantics = 25
+	SensorSemantics_SENSOR_SEMANTICS_DATA_SIZE       SensorSemantics = 26
+	SensorSemantics_SENSOR_SEMANTICS_SIGNAL_STRENGTH SensorSemantics = 27
+	// Earth
+	SensorSemantics_SENSOR_SEMANTICS_PH         SensorSemantics = 28
+	SensorSemantics_SENSOR_SEMANTICS_POTASSIUM  SensorSemantics = 29
+	SensorSemantics_SENSOR_SEMANTICS_PHOSPHORUS SensorSemantics = 30
+	SensorSemantics_SENSOR_SEMANTICS_NITROGEN   SensorSemantics = 31
+)
+
+// Enum value maps for SensorSemantics.
+var (
+	SensorSemantics_name = map[int32]string{
+		0:  "SENSOR_SEMANTICS_UNSPECIFIED",
+		1:  "SENSOR_SEMANTICS_UNIVERSAL",
+		2:  "SENSOR_SEMANTICS_TEMPERATURE",
+		3:  "SENSOR_SEMANTICS_PRESSURE",
+		4:  "SENSOR_SEMANTICS_FREQUENCY",
+		5:  "SENSOR_SEMANTICS_MOISTURE",
+		6:  "SENSOR_SEMANTICS_UPTIME",
+		7:  "SENSOR_SEMANTICS_AREA",
+		8:  "SENSOR_SEMANTICS_DISTANCE",
+		9:  "SENSOR_SEMANTICS_DURATION",
+		10: "SENSOR_SEMANTICS_ILLUMINANCE",
+		11: "SENSOR_SEMANTICS_WATER",
+		12: "SENSOR_SEMANTICS_WEIGHT",
+		13: "SENSOR_SEMANTICS_AQI",
+		14: "SENSOR_SEMANTICS_CO2",
+		15: "SENSOR_SEMANTICS_PM1",
+		16: "SENSOR_SEMANTICS_PM25",
+		17: "SENSOR_SEMANTICS_PM4",
+		18: "SENSOR_SEMANTICS_PM10",
+		19: "SENSOR_SEMANTICS_HUMIDITY",
+		20: "SENSOR_SEMANTICS_WIND_SPEED",
+		21: "SENSOR_SEMANTICS_BATTERY",
+		22: "SENSOR_SEMANTICS_ENERGY",
+		23: "SENSOR_SEMANTICS_VOLTAGE",
+		24: "SENSOR_SEMANTICS_CURRENT",
+		25: "SENSOR_SEMANTICS_DATA_RATE",
+		26: "SENSOR_SEMANTICS_DATA_SIZE",
+		27: "SENSOR_SEMANTICS_SIGNAL_STRENGTH",
+		28: "SENSOR_SEMANTICS_PH",
+		29: "SENSOR_SEMANTICS_POTASSIUM",
+		30: "SENSOR_SEMANTICS_PHOSPHORUS",
+		31: "SENSOR_SEMANTICS_NITROGEN",
+	}
+	SensorSemantics_value = map[string]int32{
+		"SENSOR_SEMANTICS_UNSPECIFIED":     0,
+		"SENSOR_SEMANTICS_UNIVERSAL":       1,
+		"SENSOR_SEMANTICS_TEMPERATURE":     2,
+		"SENSOR_SEMANTICS_PRESSURE":        3,
+		"SENSOR_SEMANTICS_FREQUENCY":       4,
+		"SENSOR_SEMANTICS_MOISTURE":        5,
+		"SENSOR_SEMANTICS_UPTIME":          6,
+		"SENSOR_SEMANTICS_AREA":            7,
+		"SENSOR_SEMANTICS_DISTANCE":        8,
+		"SENSOR_SEMANTICS_DURATION":        9,
+		"SENSOR_SEMANTICS_ILLUMINANCE":     10,
+		"SENSOR_SEMANTICS_WATER":           11,
+		"SENSOR_SEMANTICS_WEIGHT":          12,
+		"SENSOR_SEMANTICS_AQI":             13,
+		"SENSOR_SEMANTICS_CO2":             14,
+		"SENSOR_SEMANTICS_PM1":             15,
+		"SENSOR_SEMANTICS_PM25":            16,
+		"SENSOR_SEMANTICS_PM4":             17,
+		"SENSOR_SEMANTICS_PM10":            18,
+		"SENSOR_SEMANTICS_HUMIDITY":        19,
+		"SENSOR_SEMANTICS_WIND_SPEED":      20,
+		"SENSOR_SEMANTICS_BATTERY":         21,
+		"SENSOR_SEMANTICS_ENERGY":          22,
+		"SENSOR_SEMANTICS_VOLTAGE":         23,
+		"SENSOR_SEMANTICS_CURRENT":         24,
+		"SENSOR_SEMANTICS_DATA_RATE":       25,
+		"SENSOR_SEMANTICS_DATA_SIZE":       26,
+		"SENSOR_SEMANTICS_SIGNAL_STRENGTH": 27,
+		"SENSOR_SEMANTICS_PH":              28,
+		"SENSOR_SEMANTICS_POTASSIUM":       29,
+		"SENSOR_SEMANTICS_PHOSPHORUS":      30,
+		"SENSOR_SEMANTICS_NITROGEN":        31,
+	}
+)
+
+func (x SensorSemantics) Enum() *SensorSemantics {
+	p := new(SensorSemantics)
+	*p = x
+	return p
+}
+
+func (x SensorSemantics) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SensorSemantics) Descriptor() protoreflect.EnumDescriptor {
+	return file_proto_loris_proto_enumTypes[1].Descriptor()
+}
+
+func (SensorSemantics) Type() protoreflect.EnumType {
+	return &file_proto_loris_proto_enumTypes[1]
+}
+
+func (x SensorSemantics) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SensorSemantics.Descriptor instead.
+func (SensorSemantics) EnumDescriptor() ([]byte, []int) {
+	return file_proto_loris_proto_rawDescGZIP(), []int{1}
 }
 
 type FuncArgType int32
@@ -212,11 +261,11 @@ func (x FuncArgType) String() string {
 }
 
 func (FuncArgType) Descriptor() protoreflect.EnumDescriptor {
-	return file_loris_proto_enumTypes[1].Descriptor()
+	return file_proto_loris_proto_enumTypes[2].Descriptor()
 }
 
 func (FuncArgType) Type() protoreflect.EnumType {
-	return &file_loris_proto_enumTypes[1]
+	return &file_proto_loris_proto_enumTypes[2]
 }
 
 func (x FuncArgType) Number() protoreflect.EnumNumber {
@@ -225,7 +274,102 @@ func (x FuncArgType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use FuncArgType.Descriptor instead.
 func (FuncArgType) EnumDescriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{1}
+	return file_proto_loris_proto_rawDescGZIP(), []int{2}
+}
+
+type UpPingType int32
+
+const (
+	UpPingType_UP_PING_TYPE_UNSPECIFIED UpPingType = 0
+	UpPingType_UP_PING_TYPE_HELLO       UpPingType = 1
+)
+
+// Enum value maps for UpPingType.
+var (
+	UpPingType_name = map[int32]string{
+		0: "UP_PING_TYPE_UNSPECIFIED",
+		1: "UP_PING_TYPE_HELLO",
+	}
+	UpPingType_value = map[string]int32{
+		"UP_PING_TYPE_UNSPECIFIED": 0,
+		"UP_PING_TYPE_HELLO":       1,
+	}
+)
+
+func (x UpPingType) Enum() *UpPingType {
+	p := new(UpPingType)
+	*p = x
+	return p
+}
+
+func (x UpPingType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (UpPingType) Descriptor() protoreflect.EnumDescriptor {
+	return file_proto_loris_proto_enumTypes[3].Descriptor()
+}
+
+func (UpPingType) Type() protoreflect.EnumType {
+	return &file_proto_loris_proto_enumTypes[3]
+}
+
+func (x UpPingType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use UpPingType.Descriptor instead.
+func (UpPingType) EnumDescriptor() ([]byte, []int) {
+	return file_proto_loris_proto_rawDescGZIP(), []int{3}
+}
+
+type DownPingType int32
+
+const (
+	DownPingType_DOWN_PING_TYPE_UNSPECIFIED DownPingType = 0
+	DownPingType_DOWN_PING_TYPE_HELLO       DownPingType = 1
+	DownPingType_DOWN_PING_TYPE_DISCONNECT  DownPingType = 2
+)
+
+// Enum value maps for DownPingType.
+var (
+	DownPingType_name = map[int32]string{
+		0: "DOWN_PING_TYPE_UNSPECIFIED",
+		1: "DOWN_PING_TYPE_HELLO",
+		2: "DOWN_PING_TYPE_DISCONNECT",
+	}
+	DownPingType_value = map[string]int32{
+		"DOWN_PING_TYPE_UNSPECIFIED": 0,
+		"DOWN_PING_TYPE_HELLO":       1,
+		"DOWN_PING_TYPE_DISCONNECT":  2,
+	}
+)
+
+func (x DownPingType) Enum() *DownPingType {
+	p := new(DownPingType)
+	*p = x
+	return p
+}
+
+func (x DownPingType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (DownPingType) Descriptor() protoreflect.EnumDescriptor {
+	return file_proto_loris_proto_enumTypes[4].Descriptor()
+}
+
+func (DownPingType) Type() protoreflect.EnumType {
+	return &file_proto_loris_proto_enumTypes[4]
+}
+
+func (x DownPingType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use DownPingType.Descriptor instead.
+func (DownPingType) EnumDescriptor() ([]byte, []int) {
+	return file_proto_loris_proto_rawDescGZIP(), []int{4}
 }
 
 type Sensor struct {
@@ -233,15 +377,16 @@ type Sensor struct {
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	ValueType     ValueType              `protobuf:"varint,4,opt,name=value_type,json=valueType,proto3,enum=protocol.v1.ValueType" json:"value_type,omitempty"`
-	Unit          *string                `protobuf:"bytes,5,opt,name=unit,proto3,oneof" json:"unit,omitempty"`
+	ValueType     SensorValueType        `protobuf:"varint,4,opt,name=value_type,json=valueType,proto3,enum=protocol.v1.SensorValueType" json:"value_type,omitempty"`
+	Semantics     SensorSemantics        `protobuf:"varint,5,opt,name=semantics,proto3,enum=protocol.v1.SensorSemantics" json:"semantics,omitempty"`
+	Unit          *string                `protobuf:"bytes,6,opt,name=unit,proto3,oneof" json:"unit,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Sensor) Reset() {
 	*x = Sensor{}
-	mi := &file_loris_proto_msgTypes[0]
+	mi := &file_proto_loris_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -253,7 +398,7 @@ func (x *Sensor) String() string {
 func (*Sensor) ProtoMessage() {}
 
 func (x *Sensor) ProtoReflect() protoreflect.Message {
-	mi := &file_loris_proto_msgTypes[0]
+	mi := &file_proto_loris_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -266,7 +411,7 @@ func (x *Sensor) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Sensor.ProtoReflect.Descriptor instead.
 func (*Sensor) Descriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{0}
+	return file_proto_loris_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Sensor) GetId() int32 {
@@ -290,11 +435,18 @@ func (x *Sensor) GetDescription() string {
 	return ""
 }
 
-func (x *Sensor) GetValueType() ValueType {
+func (x *Sensor) GetValueType() SensorValueType {
 	if x != nil {
 		return x.ValueType
 	}
-	return ValueType_VALUE_TYPE_UNSPECIFIED
+	return SensorValueType_SENSOR_VALUE_TYPE_UNSPECIFIED
+}
+
+func (x *Sensor) GetSemantics() SensorSemantics {
+	if x != nil {
+		return x.Semantics
+	}
+	return SensorSemantics_SENSOR_SEMANTICS_UNSPECIFIED
 }
 
 func (x *Sensor) GetUnit() string {
@@ -316,7 +468,7 @@ type Function struct {
 
 func (x *Function) Reset() {
 	*x = Function{}
-	mi := &file_loris_proto_msgTypes[1]
+	mi := &file_proto_loris_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -328,7 +480,7 @@ func (x *Function) String() string {
 func (*Function) ProtoMessage() {}
 
 func (x *Function) ProtoReflect() protoreflect.Message {
-	mi := &file_loris_proto_msgTypes[1]
+	mi := &file_proto_loris_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -341,7 +493,7 @@ func (x *Function) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Function.ProtoReflect.Descriptor instead.
 func (*Function) Descriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{1}
+	return file_proto_loris_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Function) GetId() int32 {
@@ -383,7 +535,7 @@ type Capabilities struct {
 
 func (x *Capabilities) Reset() {
 	*x = Capabilities{}
-	mi := &file_loris_proto_msgTypes[2]
+	mi := &file_proto_loris_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -395,7 +547,7 @@ func (x *Capabilities) String() string {
 func (*Capabilities) ProtoMessage() {}
 
 func (x *Capabilities) ProtoReflect() protoreflect.Message {
-	mi := &file_loris_proto_msgTypes[2]
+	mi := &file_proto_loris_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -408,7 +560,7 @@ func (x *Capabilities) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Capabilities.ProtoReflect.Descriptor instead.
 func (*Capabilities) Descriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{2}
+	return file_proto_loris_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Capabilities) GetDeviceName() string {
@@ -448,7 +600,7 @@ type Report struct {
 
 func (x *Report) Reset() {
 	*x = Report{}
-	mi := &file_loris_proto_msgTypes[3]
+	mi := &file_proto_loris_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -460,7 +612,7 @@ func (x *Report) String() string {
 func (*Report) ProtoMessage() {}
 
 func (x *Report) ProtoReflect() protoreflect.Message {
-	mi := &file_loris_proto_msgTypes[3]
+	mi := &file_proto_loris_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -473,7 +625,7 @@ func (x *Report) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Report.ProtoReflect.Descriptor instead.
 func (*Report) Descriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{3}
+	return file_proto_loris_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Report) GetSensorId() int32 {
@@ -554,78 +706,6 @@ func (*Report_StrVal) isReport_Value() {}
 
 func (*Report_BoolVal) isReport_Value() {}
 
-type Hello struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Hello) Reset() {
-	*x = Hello{}
-	mi := &file_loris_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Hello) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Hello) ProtoMessage() {}
-
-func (x *Hello) ProtoReflect() protoreflect.Message {
-	mi := &file_loris_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Hello.ProtoReflect.Descriptor instead.
-func (*Hello) Descriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{4}
-}
-
-type Disconnect struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Disconnect) Reset() {
-	*x = Disconnect{}
-	mi := &file_loris_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Disconnect) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Disconnect) ProtoMessage() {}
-
-func (x *Disconnect) ProtoReflect() protoreflect.Message {
-	mi := &file_loris_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Disconnect.ProtoReflect.Descriptor instead.
-func (*Disconnect) Descriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{5}
-}
-
 type Call struct {
 	state      protoimpl.MessageState `protogen:"open.v1"`
 	FunctionId int32                  `protobuf:"varint,1,opt,name=function_id,json=functionId,proto3" json:"function_id,omitempty"`
@@ -643,7 +723,7 @@ type Call struct {
 
 func (x *Call) Reset() {
 	*x = Call{}
-	mi := &file_loris_proto_msgTypes[6]
+	mi := &file_proto_loris_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -655,7 +735,7 @@ func (x *Call) String() string {
 func (*Call) ProtoMessage() {}
 
 func (x *Call) ProtoReflect() protoreflect.Message {
-	mi := &file_loris_proto_msgTypes[6]
+	mi := &file_proto_loris_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -668,7 +748,7 @@ func (x *Call) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Call.ProtoReflect.Descriptor instead.
 func (*Call) Descriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{6}
+	return file_proto_loris_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Call) GetFunctionId() int32 {
@@ -756,13 +836,100 @@ func (*Call_BoolVal) isCall_Value() {}
 
 func (*Call_FloatVal) isCall_Value() {}
 
+type UpPing struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Type          UpPingType             `protobuf:"varint,1,opt,name=type,proto3,enum=protocol.v1.UpPingType" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpPing) Reset() {
+	*x = UpPing{}
+	mi := &file_proto_loris_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpPing) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpPing) ProtoMessage() {}
+
+func (x *UpPing) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_loris_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpPing.ProtoReflect.Descriptor instead.
+func (*UpPing) Descriptor() ([]byte, []int) {
+	return file_proto_loris_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpPing) GetType() UpPingType {
+	if x != nil {
+		return x.Type
+	}
+	return UpPingType_UP_PING_TYPE_UNSPECIFIED
+}
+
+type DownPing struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Type          DownPingType           `protobuf:"varint,1,opt,name=type,proto3,enum=protocol.v1.DownPingType" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DownPing) Reset() {
+	*x = DownPing{}
+	mi := &file_proto_loris_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DownPing) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DownPing) ProtoMessage() {}
+
+func (x *DownPing) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_loris_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DownPing.ProtoReflect.Descriptor instead.
+func (*DownPing) Descriptor() ([]byte, []int) {
+	return file_proto_loris_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DownPing) GetType() DownPingType {
+	if x != nil {
+		return x.Type
+	}
+	return DownPingType_DOWN_PING_TYPE_UNSPECIFIED
+}
+
 type Downlink struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Types that are valid to be assigned to Payload:
 	//
 	//	*Downlink_Call
-	//	*Downlink_Hello
-	//	*Downlink_Disconnect
+	//	*Downlink_Ping
 	Payload       isDownlink_Payload `protobuf_oneof:"payload"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -770,7 +937,7 @@ type Downlink struct {
 
 func (x *Downlink) Reset() {
 	*x = Downlink{}
-	mi := &file_loris_proto_msgTypes[7]
+	mi := &file_proto_loris_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -782,7 +949,7 @@ func (x *Downlink) String() string {
 func (*Downlink) ProtoMessage() {}
 
 func (x *Downlink) ProtoReflect() protoreflect.Message {
-	mi := &file_loris_proto_msgTypes[7]
+	mi := &file_proto_loris_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -795,7 +962,7 @@ func (x *Downlink) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Downlink.ProtoReflect.Descriptor instead.
 func (*Downlink) Descriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{7}
+	return file_proto_loris_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Downlink) GetPayload() isDownlink_Payload {
@@ -814,19 +981,10 @@ func (x *Downlink) GetCall() *Call {
 	return nil
 }
 
-func (x *Downlink) GetHello() *Hello {
+func (x *Downlink) GetPing() *DownPing {
 	if x != nil {
-		if x, ok := x.Payload.(*Downlink_Hello); ok {
-			return x.Hello
-		}
-	}
-	return nil
-}
-
-func (x *Downlink) GetDisconnect() *Disconnect {
-	if x != nil {
-		if x, ok := x.Payload.(*Downlink_Disconnect); ok {
-			return x.Disconnect
+		if x, ok := x.Payload.(*Downlink_Ping); ok {
+			return x.Ping
 		}
 	}
 	return nil
@@ -840,19 +998,13 @@ type Downlink_Call struct {
 	Call *Call `protobuf:"bytes,1,opt,name=call,proto3,oneof"`
 }
 
-type Downlink_Hello struct {
-	Hello *Hello `protobuf:"bytes,2,opt,name=hello,proto3,oneof"`
-}
-
-type Downlink_Disconnect struct {
-	Disconnect *Disconnect `protobuf:"bytes,3,opt,name=disconnect,proto3,oneof"`
+type Downlink_Ping struct {
+	Ping *DownPing `protobuf:"bytes,2,opt,name=ping,proto3,oneof"`
 }
 
 func (*Downlink_Call) isDownlink_Payload() {}
 
-func (*Downlink_Hello) isDownlink_Payload() {}
-
-func (*Downlink_Disconnect) isDownlink_Payload() {}
+func (*Downlink_Ping) isDownlink_Payload() {}
 
 type Uplink struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -860,7 +1012,7 @@ type Uplink struct {
 	//
 	//	*Uplink_Report
 	//	*Uplink_Capabilities
-	//	*Uplink_Hello
+	//	*Uplink_Ping
 	Payload       isUplink_Payload `protobuf_oneof:"payload"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -868,7 +1020,7 @@ type Uplink struct {
 
 func (x *Uplink) Reset() {
 	*x = Uplink{}
-	mi := &file_loris_proto_msgTypes[8]
+	mi := &file_proto_loris_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -880,7 +1032,7 @@ func (x *Uplink) String() string {
 func (*Uplink) ProtoMessage() {}
 
 func (x *Uplink) ProtoReflect() protoreflect.Message {
-	mi := &file_loris_proto_msgTypes[8]
+	mi := &file_proto_loris_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -893,7 +1045,7 @@ func (x *Uplink) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Uplink.ProtoReflect.Descriptor instead.
 func (*Uplink) Descriptor() ([]byte, []int) {
-	return file_loris_proto_rawDescGZIP(), []int{8}
+	return file_proto_loris_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Uplink) GetPayload() isUplink_Payload {
@@ -921,10 +1073,10 @@ func (x *Uplink) GetCapabilities() *Capabilities {
 	return nil
 }
 
-func (x *Uplink) GetHello() *Hello {
+func (x *Uplink) GetPing() *UpPing {
 	if x != nil {
-		if x, ok := x.Payload.(*Uplink_Hello); ok {
-			return x.Hello
+		if x, ok := x.Payload.(*Uplink_Ping); ok {
+			return x.Ping
 		}
 	}
 	return nil
@@ -942,28 +1094,29 @@ type Uplink_Capabilities struct {
 	Capabilities *Capabilities `protobuf:"bytes,2,opt,name=capabilities,proto3,oneof"`
 }
 
-type Uplink_Hello struct {
-	Hello *Hello `protobuf:"bytes,3,opt,name=hello,proto3,oneof"`
+type Uplink_Ping struct {
+	Ping *UpPing `protobuf:"bytes,3,opt,name=ping,proto3,oneof"`
 }
 
 func (*Uplink_Report) isUplink_Payload() {}
 
 func (*Uplink_Capabilities) isUplink_Payload() {}
 
-func (*Uplink_Hello) isUplink_Payload() {}
+func (*Uplink_Ping) isUplink_Payload() {}
 
-var File_loris_proto protoreflect.FileDescriptor
+var File_proto_loris_proto protoreflect.FileDescriptor
 
-const file_loris_proto_rawDesc = "" +
+const file_proto_loris_proto_rawDesc = "" +
 	"\n" +
-	"\vloris.proto\x12\vprotocol.v1\"\xa7\x01\n" +
+	"\x11proto/loris.proto\x12\vprotocol.v1\"\xe9\x01\n" +
 	"\x06Sensor\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescription\x125\n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12;\n" +
 	"\n" +
-	"value_type\x18\x04 \x01(\x0e2\x16.protocol.v1.ValueTypeR\tvalueType\x12\x17\n" +
-	"\x04unit\x18\x05 \x01(\tH\x00R\x04unit\x88\x01\x01B\a\n" +
+	"value_type\x18\x04 \x01(\x0e2\x1c.protocol.v1.SensorValueTypeR\tvalueType\x12:\n" +
+	"\tsemantics\x18\x05 \x01(\x0e2\x1c.protocol.v1.SensorSemanticsR\tsemantics\x12\x17\n" +
+	"\x04unit\x18\x06 \x01(\tH\x00R\x04unit\x88\x01\x01B\a\n" +
 	"\x05_unit\"\x85\x01\n" +
 	"\bFunction\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
@@ -981,10 +1134,7 @@ const file_loris_proto_rawDesc = "" +
 	"\tfloat_val\x18\x03 \x01(\x02H\x00R\bfloatVal\x12\x19\n" +
 	"\astr_val\x18\x04 \x01(\tH\x00R\x06strVal\x12\x1b\n" +
 	"\bbool_val\x18\x05 \x01(\bH\x00R\aboolValB\a\n" +
-	"\x05value\"\a\n" +
-	"\x05Hello\"\f\n" +
-	"\n" +
-	"Disconnect\"\xe3\x01\n" +
+	"\x05value\"\xe3\x01\n" +
 	"\x04Call\x12\x1f\n" +
 	"\vfunction_id\x18\x01 \x01(\x05R\n" +
 	"functionId\x12\x19\n" +
@@ -994,152 +1144,169 @@ const file_loris_proto_rawDesc = "" +
 	"\tfloat_val\x18\x05 \x01(\x02H\x00R\bfloatVal\x12+\n" +
 	"\x0fwake_after_secs\x18\x06 \x01(\x05H\x01R\rwakeAfterSecs\x88\x01\x01B\a\n" +
 	"\x05valueB\x12\n" +
-	"\x10_wake_after_secs\"\xa5\x01\n" +
+	"\x10_wake_after_secs\"5\n" +
+	"\x06UpPing\x12+\n" +
+	"\x04type\x18\x01 \x01(\x0e2\x17.protocol.v1.UpPingTypeR\x04type\"9\n" +
+	"\bDownPing\x12-\n" +
+	"\x04type\x18\x01 \x01(\x0e2\x19.protocol.v1.DownPingTypeR\x04type\"k\n" +
 	"\bDownlink\x12'\n" +
-	"\x04call\x18\x01 \x01(\v2\x11.protocol.v1.CallH\x00R\x04call\x12*\n" +
-	"\x05hello\x18\x02 \x01(\v2\x12.protocol.v1.HelloH\x00R\x05hello\x129\n" +
-	"\n" +
-	"disconnect\x18\x03 \x01(\v2\x17.protocol.v1.DisconnectH\x00R\n" +
-	"disconnectB\t\n" +
-	"\apayload\"\xaf\x01\n" +
+	"\x04call\x18\x01 \x01(\v2\x11.protocol.v1.CallH\x00R\x04call\x12+\n" +
+	"\x04ping\x18\x02 \x01(\v2\x15.protocol.v1.DownPingH\x00R\x04pingB\t\n" +
+	"\apayload\"\xae\x01\n" +
 	"\x06Uplink\x12-\n" +
 	"\x06report\x18\x01 \x01(\v2\x13.protocol.v1.ReportH\x00R\x06report\x12?\n" +
-	"\fcapabilities\x18\x02 \x01(\v2\x19.protocol.v1.CapabilitiesH\x00R\fcapabilities\x12*\n" +
-	"\x05hello\x18\x03 \x01(\v2\x12.protocol.v1.HelloH\x00R\x05helloB\t\n" +
-	"\apayload*\xba\x06\n" +
-	"\tValueType\x12\x1a\n" +
-	"\x16VALUE_TYPE_UNSPECIFIED\x10\x00\x12\x16\n" +
-	"\x12VALUE_TYPE_NUMERIC\x10\x01\x12\x13\n" +
-	"\x0fVALUE_TYPE_TEXT\x10\x02\x12\x13\n" +
-	"\x0fVALUE_TYPE_BOOL\x10\x03\x12\x1a\n" +
-	"\x16VALUE_TYPE_TEMPERATURE\x10\x04\x12\x17\n" +
-	"\x13VALUE_TYPE_PRESSURE\x10\x05\x12\x18\n" +
-	"\x14VALUE_TYPE_FREQUENCY\x10\x06\x12\x17\n" +
-	"\x13VALUE_TYPE_MOISTURE\x10\a\x12\x15\n" +
-	"\x11VALUE_TYPE_UPTIME\x10\b\x12\x13\n" +
-	"\x0fVALUE_TYPE_AREA\x10\t\x12\x17\n" +
-	"\x13VALUE_TYPE_DISTANCE\x10\n" +
-	"\x12\x17\n" +
-	"\x13VALUE_TYPE_DURATION\x10\v\x12\x1a\n" +
-	"\x16VALUE_TYPE_ILLUMINANCE\x10\f\x12\x14\n" +
-	"\x10VALUE_TYPE_WATER\x10\r\x12\x15\n" +
-	"\x11VALUE_TYPE_WEIGHT\x10\x0e\x12\x12\n" +
-	"\x0eVALUE_TYPE_AQI\x10\x0f\x12\x12\n" +
-	"\x0eVALUE_TYPE_CO2\x10\x10\x12\x12\n" +
-	"\x0eVALUE_TYPE_PM1\x10\x11\x12\x13\n" +
-	"\x0fVALUE_TYPE_PM25\x10\x12\x12\x12\n" +
-	"\x0eVALUE_TYPE_PM4\x10\x13\x12\x13\n" +
-	"\x0fVALUE_TYPE_PM10\x10\x14\x12\x17\n" +
-	"\x13VALUE_TYPE_HUMIDITY\x10\x15\x12\x19\n" +
-	"\x15VALUE_TYPE_WIND_SPEED\x10\x16\x12\x16\n" +
-	"\x12VALUE_TYPE_BATTERY\x10\x17\x12\x15\n" +
-	"\x11VALUE_TYPE_ENERGY\x10\x18\x12\x16\n" +
-	"\x12VALUE_TYPE_VOLTAGE\x10\x19\x12\x16\n" +
-	"\x12VALUE_TYPE_CURRENT\x10\x1a\x12\x18\n" +
-	"\x14VALUE_TYPE_DATA_RATE\x10\x1b\x12\x18\n" +
-	"\x14VALUE_TYPE_DATA_SIZE\x10\x1c\x12\x1e\n" +
-	"\x1aVALUE_TYPE_SIGNAL_STRENGTH\x10\x1d\x12\x11\n" +
-	"\rVALUE_TYPE_PH\x10\x1e\x12\x18\n" +
-	"\x14VALUE_TYPE_POTASSIUM\x10\x1f\x12\x19\n" +
-	"\x15VALUE_TYPE_PHOSPHORUS\x10 \x12\x17\n" +
-	"\x13VALUE_TYPE_NITROGEN\x10!*\xa6\x01\n" +
+	"\fcapabilities\x18\x02 \x01(\v2\x19.protocol.v1.CapabilitiesH\x00R\fcapabilities\x12)\n" +
+	"\x04ping\x18\x03 \x01(\v2\x13.protocol.v1.UpPingH\x00R\x04pingB\t\n" +
+	"\apayload*\xa4\x01\n" +
+	"\x0fSensorValueType\x12!\n" +
+	"\x1dSENSOR_VALUE_TYPE_UNSPECIFIED\x10\x00\x12\x19\n" +
+	"\x15SENSOR_VALUE_TYPE_INT\x10\x01\x12\x1b\n" +
+	"\x17SENSOR_VALUE_TYPE_FLOAT\x10\x02\x12\x1a\n" +
+	"\x16SENSOR_VALUE_TYPE_TEXT\x10\x03\x12\x1a\n" +
+	"\x16SENSOR_VALUE_TYPE_BOOL\x10\x04*\xd8\a\n" +
+	"\x0fSensorSemantics\x12 \n" +
+	"\x1cSENSOR_SEMANTICS_UNSPECIFIED\x10\x00\x12\x1e\n" +
+	"\x1aSENSOR_SEMANTICS_UNIVERSAL\x10\x01\x12 \n" +
+	"\x1cSENSOR_SEMANTICS_TEMPERATURE\x10\x02\x12\x1d\n" +
+	"\x19SENSOR_SEMANTICS_PRESSURE\x10\x03\x12\x1e\n" +
+	"\x1aSENSOR_SEMANTICS_FREQUENCY\x10\x04\x12\x1d\n" +
+	"\x19SENSOR_SEMANTICS_MOISTURE\x10\x05\x12\x1b\n" +
+	"\x17SENSOR_SEMANTICS_UPTIME\x10\x06\x12\x19\n" +
+	"\x15SENSOR_SEMANTICS_AREA\x10\a\x12\x1d\n" +
+	"\x19SENSOR_SEMANTICS_DISTANCE\x10\b\x12\x1d\n" +
+	"\x19SENSOR_SEMANTICS_DURATION\x10\t\x12 \n" +
+	"\x1cSENSOR_SEMANTICS_ILLUMINANCE\x10\n" +
+	"\x12\x1a\n" +
+	"\x16SENSOR_SEMANTICS_WATER\x10\v\x12\x1b\n" +
+	"\x17SENSOR_SEMANTICS_WEIGHT\x10\f\x12\x18\n" +
+	"\x14SENSOR_SEMANTICS_AQI\x10\r\x12\x18\n" +
+	"\x14SENSOR_SEMANTICS_CO2\x10\x0e\x12\x18\n" +
+	"\x14SENSOR_SEMANTICS_PM1\x10\x0f\x12\x19\n" +
+	"\x15SENSOR_SEMANTICS_PM25\x10\x10\x12\x18\n" +
+	"\x14SENSOR_SEMANTICS_PM4\x10\x11\x12\x19\n" +
+	"\x15SENSOR_SEMANTICS_PM10\x10\x12\x12\x1d\n" +
+	"\x19SENSOR_SEMANTICS_HUMIDITY\x10\x13\x12\x1f\n" +
+	"\x1bSENSOR_SEMANTICS_WIND_SPEED\x10\x14\x12\x1c\n" +
+	"\x18SENSOR_SEMANTICS_BATTERY\x10\x15\x12\x1b\n" +
+	"\x17SENSOR_SEMANTICS_ENERGY\x10\x16\x12\x1c\n" +
+	"\x18SENSOR_SEMANTICS_VOLTAGE\x10\x17\x12\x1c\n" +
+	"\x18SENSOR_SEMANTICS_CURRENT\x10\x18\x12\x1e\n" +
+	"\x1aSENSOR_SEMANTICS_DATA_RATE\x10\x19\x12\x1e\n" +
+	"\x1aSENSOR_SEMANTICS_DATA_SIZE\x10\x1a\x12$\n" +
+	" SENSOR_SEMANTICS_SIGNAL_STRENGTH\x10\x1b\x12\x17\n" +
+	"\x13SENSOR_SEMANTICS_PH\x10\x1c\x12\x1e\n" +
+	"\x1aSENSOR_SEMANTICS_POTASSIUM\x10\x1d\x12\x1f\n" +
+	"\x1bSENSOR_SEMANTICS_PHOSPHORUS\x10\x1e\x12\x1d\n" +
+	"\x19SENSOR_SEMANTICS_NITROGEN\x10\x1f*\xa6\x01\n" +
 	"\vFuncArgType\x12\x1d\n" +
 	"\x19FUNC_ARG_TYPE_UNSPECIFIED\x10\x00\x12\x16\n" +
 	"\x12FUNC_ARG_TYPE_VOID\x10\x01\x12\x15\n" +
 	"\x11FUNC_ARG_TYPE_INT\x10\x02\x12\x17\n" +
 	"\x13FUNC_ARG_TYPE_FLOAT\x10\x03\x12\x18\n" +
 	"\x14FUNC_ARG_TYPE_STRING\x10\x04\x12\x16\n" +
-	"\x12FUNC_ARG_TYPE_BOOL\x10\x05B@Z>github.com/brocaar/chirpstack-simulator/internal/loris-payloadb\x06proto3"
+	"\x12FUNC_ARG_TYPE_BOOL\x10\x05*B\n" +
+	"\n" +
+	"UpPingType\x12\x1c\n" +
+	"\x18UP_PING_TYPE_UNSPECIFIED\x10\x00\x12\x16\n" +
+	"\x12UP_PING_TYPE_HELLO\x10\x01*g\n" +
+	"\fDownPingType\x12\x1e\n" +
+	"\x1aDOWN_PING_TYPE_UNSPECIFIED\x10\x00\x12\x18\n" +
+	"\x14DOWN_PING_TYPE_HELLO\x10\x01\x12\x1d\n" +
+	"\x19DOWN_PING_TYPE_DISCONNECT\x10\x02BQZ>github.com/brocaar/chirpstack-simulator/internal/loris-payload\xaa\x02\x0eLoris.Protocolb\x06proto3"
 
 var (
-	file_loris_proto_rawDescOnce sync.Once
-	file_loris_proto_rawDescData []byte
+	file_proto_loris_proto_rawDescOnce sync.Once
+	file_proto_loris_proto_rawDescData []byte
 )
 
-func file_loris_proto_rawDescGZIP() []byte {
-	file_loris_proto_rawDescOnce.Do(func() {
-		file_loris_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_loris_proto_rawDesc), len(file_loris_proto_rawDesc)))
+func file_proto_loris_proto_rawDescGZIP() []byte {
+	file_proto_loris_proto_rawDescOnce.Do(func() {
+		file_proto_loris_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_loris_proto_rawDesc), len(file_proto_loris_proto_rawDesc)))
 	})
-	return file_loris_proto_rawDescData
+	return file_proto_loris_proto_rawDescData
 }
 
-var file_loris_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_loris_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
-var file_loris_proto_goTypes = []any{
-	(ValueType)(0),       // 0: protocol.v1.ValueType
-	(FuncArgType)(0),     // 1: protocol.v1.FuncArgType
-	(*Sensor)(nil),       // 2: protocol.v1.Sensor
-	(*Function)(nil),     // 3: protocol.v1.Function
-	(*Capabilities)(nil), // 4: protocol.v1.Capabilities
-	(*Report)(nil),       // 5: protocol.v1.Report
-	(*Hello)(nil),        // 6: protocol.v1.Hello
-	(*Disconnect)(nil),   // 7: protocol.v1.Disconnect
-	(*Call)(nil),         // 8: protocol.v1.Call
-	(*Downlink)(nil),     // 9: protocol.v1.Downlink
-	(*Uplink)(nil),       // 10: protocol.v1.Uplink
+var file_proto_loris_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
+var file_proto_loris_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_proto_loris_proto_goTypes = []any{
+	(SensorValueType)(0), // 0: protocol.v1.SensorValueType
+	(SensorSemantics)(0), // 1: protocol.v1.SensorSemantics
+	(FuncArgType)(0),     // 2: protocol.v1.FuncArgType
+	(UpPingType)(0),      // 3: protocol.v1.UpPingType
+	(DownPingType)(0),    // 4: protocol.v1.DownPingType
+	(*Sensor)(nil),       // 5: protocol.v1.Sensor
+	(*Function)(nil),     // 6: protocol.v1.Function
+	(*Capabilities)(nil), // 7: protocol.v1.Capabilities
+	(*Report)(nil),       // 8: protocol.v1.Report
+	(*Call)(nil),         // 9: protocol.v1.Call
+	(*UpPing)(nil),       // 10: protocol.v1.UpPing
+	(*DownPing)(nil),     // 11: protocol.v1.DownPing
+	(*Downlink)(nil),     // 12: protocol.v1.Downlink
+	(*Uplink)(nil),       // 13: protocol.v1.Uplink
 }
-var file_loris_proto_depIdxs = []int32{
-	0,  // 0: protocol.v1.Sensor.value_type:type_name -> protocol.v1.ValueType
-	1,  // 1: protocol.v1.Function.arg_type:type_name -> protocol.v1.FuncArgType
-	2,  // 2: protocol.v1.Capabilities.sensors:type_name -> protocol.v1.Sensor
-	3,  // 3: protocol.v1.Capabilities.functions:type_name -> protocol.v1.Function
-	8,  // 4: protocol.v1.Downlink.call:type_name -> protocol.v1.Call
-	6,  // 5: protocol.v1.Downlink.hello:type_name -> protocol.v1.Hello
-	7,  // 6: protocol.v1.Downlink.disconnect:type_name -> protocol.v1.Disconnect
-	5,  // 7: protocol.v1.Uplink.report:type_name -> protocol.v1.Report
-	4,  // 8: protocol.v1.Uplink.capabilities:type_name -> protocol.v1.Capabilities
-	6,  // 9: protocol.v1.Uplink.hello:type_name -> protocol.v1.Hello
-	10, // [10:10] is the sub-list for method output_type
-	10, // [10:10] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+var file_proto_loris_proto_depIdxs = []int32{
+	0,  // 0: protocol.v1.Sensor.value_type:type_name -> protocol.v1.SensorValueType
+	1,  // 1: protocol.v1.Sensor.semantics:type_name -> protocol.v1.SensorSemantics
+	2,  // 2: protocol.v1.Function.arg_type:type_name -> protocol.v1.FuncArgType
+	5,  // 3: protocol.v1.Capabilities.sensors:type_name -> protocol.v1.Sensor
+	6,  // 4: protocol.v1.Capabilities.functions:type_name -> protocol.v1.Function
+	3,  // 5: protocol.v1.UpPing.type:type_name -> protocol.v1.UpPingType
+	4,  // 6: protocol.v1.DownPing.type:type_name -> protocol.v1.DownPingType
+	9,  // 7: protocol.v1.Downlink.call:type_name -> protocol.v1.Call
+	11, // 8: protocol.v1.Downlink.ping:type_name -> protocol.v1.DownPing
+	8,  // 9: protocol.v1.Uplink.report:type_name -> protocol.v1.Report
+	7,  // 10: protocol.v1.Uplink.capabilities:type_name -> protocol.v1.Capabilities
+	10, // 11: protocol.v1.Uplink.ping:type_name -> protocol.v1.UpPing
+	12, // [12:12] is the sub-list for method output_type
+	12, // [12:12] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
-func init() { file_loris_proto_init() }
-func file_loris_proto_init() {
-	if File_loris_proto != nil {
+func init() { file_proto_loris_proto_init() }
+func file_proto_loris_proto_init() {
+	if File_proto_loris_proto != nil {
 		return
 	}
-	file_loris_proto_msgTypes[0].OneofWrappers = []any{}
-	file_loris_proto_msgTypes[3].OneofWrappers = []any{
+	file_proto_loris_proto_msgTypes[0].OneofWrappers = []any{}
+	file_proto_loris_proto_msgTypes[3].OneofWrappers = []any{
 		(*Report_IntVal)(nil),
 		(*Report_FloatVal)(nil),
 		(*Report_StrVal)(nil),
 		(*Report_BoolVal)(nil),
 	}
-	file_loris_proto_msgTypes[6].OneofWrappers = []any{
+	file_proto_loris_proto_msgTypes[4].OneofWrappers = []any{
 		(*Call_IntVal)(nil),
 		(*Call_StrVal)(nil),
 		(*Call_BoolVal)(nil),
 		(*Call_FloatVal)(nil),
 	}
-	file_loris_proto_msgTypes[7].OneofWrappers = []any{
+	file_proto_loris_proto_msgTypes[7].OneofWrappers = []any{
 		(*Downlink_Call)(nil),
-		(*Downlink_Hello)(nil),
-		(*Downlink_Disconnect)(nil),
+		(*Downlink_Ping)(nil),
 	}
-	file_loris_proto_msgTypes[8].OneofWrappers = []any{
+	file_proto_loris_proto_msgTypes[8].OneofWrappers = []any{
 		(*Uplink_Report)(nil),
 		(*Uplink_Capabilities)(nil),
-		(*Uplink_Hello)(nil),
+		(*Uplink_Ping)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_loris_proto_rawDesc), len(file_loris_proto_rawDesc)),
-			NumEnums:      2,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_loris_proto_rawDesc), len(file_proto_loris_proto_rawDesc)),
+			NumEnums:      5,
 			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_loris_proto_goTypes,
-		DependencyIndexes: file_loris_proto_depIdxs,
-		EnumInfos:         file_loris_proto_enumTypes,
-		MessageInfos:      file_loris_proto_msgTypes,
+		GoTypes:           file_proto_loris_proto_goTypes,
+		DependencyIndexes: file_proto_loris_proto_depIdxs,
+		EnumInfos:         file_proto_loris_proto_enumTypes,
+		MessageInfos:      file_proto_loris_proto_msgTypes,
 	}.Build()
-	File_loris_proto = out.File
-	file_loris_proto_goTypes = nil
-	file_loris_proto_depIdxs = nil
+	File_proto_loris_proto = out.File
+	file_proto_loris_proto_goTypes = nil
+	file_proto_loris_proto_depIdxs = nil
 }
